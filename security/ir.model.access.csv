@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_lead_wizard,access.crm.lead.wizard,model_crm_lead_wizard,crm.group_use_lead,1,1,1,1
+access_lead_define_date,access.lead.define.date,model_lead_define_date,crm.group_use_lead,1,1,1,1
+access_next_action_wizard,access.next.action.wizard,model_next_action_wizard,crm.group_use_lead,1,1,1,1
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="crm_new_lead_wizard" model="ir.actions.act_window">
+    <field name="name">New lead</field>
+    <field name="res_model">crm.lead.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="crm_new_lead_form_wizard"/>
+    <field name="target">new</field>
+</record>
+
+<menuitem id="crm_menu_new_lead" 
+          name="New lead" 
+          parent="crm.crm_menu_leads"
+          action="crm_new_lead_wizard"
+          groups="crm.group_use_lead"/>
+
+</odoo>

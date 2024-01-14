@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="overdue_action_report">
+
+            <t t-call="web.html_container">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h2 class="mt16">
+                            <span >Overdue actions</span>
+                        </h2>
+
+                        <div style="margin-top:80px;"></div>
+                        <t t-set="leads" t-value="request.env['crm.lead'].search([('type','=','lead')])"/>
+                        <t t-set="date_today" t-as="datetime.datetime.now().strftime('%d/%m/%Y')"/>
+                        <table class="table table-sm o_main_table" style="margin-left: auto;margin-right: auto;">
+                            <thead>
+                                <tr>
+                                    <th name="th_lead" class="text-left">Lead</th>
+                                    <th name="th_partner" class="text-left">Customer</th>
+                                    <th name="th_contact" class="text-left">Contact</th>
+                                    <th name="th_phone" class="text-left">Phone</th>
+                                    <th name="th_date" class="text-left">Date next action</th>
+                                    <th name="th_team" class="text-left">Team</th>
+                                    <th name="th_salesperson" class="text-left">Salesperson</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="sale_tbody">
+                                <t t-foreach="leads" t-as="lead">
+                                    <t t-if="lead.activity_ids">
+                                        <t t-foreach="lead.activity_ids" t-as="action">
+                                            <t t-if="datetime.datetime.strptime(action.date_deadline.strftime('%d/%m/%Y'),'%d/%m/%Y').date() &lt; datetime.datetime.strptime(datetime.date.today().strftime('%d/%m/%Y'),'%d/%m/%Y').date()">
+                                                <tr>
+                                                    <td name="td_lead">
+                                                        <span t-esc="lead.name"/>
+                                                    </td>
+                                                    <td name="td_partner">
+                                                        <span t-esc="lead.partner_name"/>
+                                                    </td>
+                                                    <td name="td_contact">
+                                                        <span t-esc="lead.contact_name"/>
+                                                    </td>
+                                                    <td name="td_phone">
+                                                        <span t-esc="lead.phone"/>
+                                                    </td>
+                                                    <td name="td_date">
+                                                        <span t-esc="action.date_deadline.strftime('%d/%m/%Y')"/>
+                                                    </td>
+                                                    <td name="td_team">
+                                                        <span t-esc="lead.team_id.name"/>
+                                                    </td>
+                                                    <td name="td_salesperson">
+                                                        <span t-esc="lead.user_id.name"/>
+                                                    </td>
+
+                                                </tr>
+                                            </t>
+
+                                        </t>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+
+        </template>
+
+    </data>
+</odoo>

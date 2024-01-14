@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_new_lead_form_wizard" model="ir.ui.view">
+        <field name="name">crm.lead.new.form</field>
+        <field name="model">crm.lead.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only" string="Lead"/>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                </div>
+                <group>
+                    <group>
+                        <field name="partner_id" widget="res_partner_many2one"/>
+                        <field name="company_name"/>
+                    </group>
+                    <group>
+                        <field name="contact_name"/>
+                        <field name="title_id"/>
+                    </group>
+                </group>
+
+                <group>
+                    <group>
+                        <field name="email"/>
+                    </group>
+                    <group>
+                        <field name="phone"/>
+                    </group>
+                </group>
+
+                <group>
+                    <group>
+                        <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="team_id" widget="selection"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Create lead" name="create_new_lead" type="object" class="btn-primary"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+</odoo>

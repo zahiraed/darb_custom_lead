@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <t t-name="darb_custom_lead.systray.LeadMenu.Previews">
+        <t t-if="!leads">
+            <div class="dropdown-item-text text-center o_no_activity">
+                <span>No leads planned.</span>
+            </div>
+        </t>
+
+        <div class="o_mail_preview" t-att-data-res_model="leads.model" t-att-data-model_name="leads.name" data-filter='my'>
+            <div class="o_mail_preview_image o_mail_preview_app">
+                <img t-att-src="leads.icon" alt="Lead"/>
+            </div>
+            <div class="o_preview_info">
+                <div class="o_preview_title">
+                    <span class="o_preview_name">
+                        <t t-esc="leads.name"/>
+                    </span>
+                    <div t-if="actions" class="o_mail_activity_action_buttons">
+                        <t t-foreach="activity.actions" t-as="action">
+                            <button type="button" t-att-title="name" t-att-class="'o_mail_activity_action btn btn-link fa ' + action.icon" t-att-data-action_xmlid="action.action_xmlid" t-att-data-res_model="model" t-att-data-model_name="name">
+                            </button>
+                        </t>
+                    </div>
+                </div>
+                <div t-if="leads.name">
+                    <button t-if="leads.lead_overdue_count" type="button" class="btn btn-link o_activity_filter_button mr16" t-att-data-res_model="leads.model" t-att-data-model_name="leads.name" data-filter='overdue'>
+                        <t t-esc="leads.lead_overdue_count"/> Late
+                     </button>
+                    <span t-if="!leads.lead_overdue_count" class="o_no_activity mr16">0 Late </span>
+                    <button t-if="leads.lead_today_count" type="button" class="btn btn-link o_activity_filter_button mr16" t-att-data-res_model="leads.model" t-att-data-model_name="leads.name" data-filter='today'>
+                        <t t-esc="leads.lead_today_count"/> Today
+                    </button>
+                    <span t-if="!leads.lead_today_count" class="o_no_activity mr16">0 Today </span>
+                    <button t-if="leads.lead_planned_count" type="button" class="btn btn-link o_activity_filter_button float-right" t-att-data-res_model="leads.model" t-att-data-model_name="leads.name" data-filter='upcoming_all'>
+                        <t t-esc="leads.lead_planned_count"/> Future
+                    </button>
+                    <span t-if="!leads.lead_planned_count" class="o_no_activity float-right">0 Future</span>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+    <t t-name="darb_custom_lead.leadMenu">
+        <li class="o_mail_systray_item">
+            <a class="dropdown-toggle o-no-caret" data-toggle="dropdown" data-display="static" aria-expanded="false" title="Leads" href="#" role="button">
+                <i class="fa fa-handshake-o" role="img" aria-label="Leads"/>
+                <span class="o_notification_counter badge badge-pill"/>
+            </a>
+            <div class="o_mail_systray_dropdown dropdown-menu dropdown-menu-right" role="menu">
+                <div class="o_mail_systray_dropdown_items"/>
+            </div>
+        </li>
+    </t>
+</templates>

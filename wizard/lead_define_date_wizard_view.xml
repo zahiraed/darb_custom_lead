@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lead_define_date_form_wizard" model="ir.ui.view">
+        <field name="name">lead.define.date.form</field>
+        <field name="model">lead.define.date</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date" style="width:50%%;"/>
+                </group>
+                <footer>
+                    <button string="Define date" name="define_next_date" type="object" class="btn-primary"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

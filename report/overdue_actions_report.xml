@@ -1,0 +1,10 @@
+<odoo>
+     <report id="report_overdue_actions"
+             model="crm.lead" 
+             string="Overdue actions"
+             report_type="qweb-pdf"
+             name="darb_custom_lead.overdue_action_report" 
+             file="darb_custom_lead.overdue_action_report"
+             groups="crm.group_use_lead"
+             menu="False"/>
+</odoo>
